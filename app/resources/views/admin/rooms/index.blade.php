@@ -58,9 +58,11 @@
                         <form method="post" action="{{ route('rooms.destroy',$rm->RoomCode_ID) }}">
                             @csrf
 
-                            <a class="btn btn-warning width:40px" href="{{ route('rooms.edit',$rm->RoomCode_ID) }}" >แก้ไขข้อมูล</a>
+                            <a class="btn btn-success width:40px" href="{{ route('rooms.show',$rm->id) }}" >แสดงข้อมูล</a>
+
                             @method('DELETE')
-                            <button class="btn btn-danger width:40%" type="submit">ลบข้อมูล </button>
+                            <button class="btn btn-danger width:40%" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')" type="submit">ลบข้อมูล </button>
+
 
                         </form>
                         </center>

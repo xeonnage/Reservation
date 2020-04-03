@@ -19,9 +19,7 @@ class UserDetailController extends Controller
      */
     public function index()
     {
-        $userdetails = DB::table('UserDetails')
-                        ->get();
-        return view('admin.userdetails.index',compact('userdetails'));
+
     }
 
     /**
@@ -202,7 +200,9 @@ class UserDetailController extends Controller
 
         Session()->flash("success","อัพเดทข้อมูลเรียบร้อยแล้ว!");
 
-        return redirect('user/UserDetail/create');
+        // return redirect('user/UserDetail/create');
+        return redirect('/home');
+        return view('home');
         // return view('home');
     }
 

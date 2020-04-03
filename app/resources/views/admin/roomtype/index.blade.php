@@ -53,7 +53,7 @@
 
                             <a class="btn btn-warning width:40px" href="{{ route('roomtype.edit',$rmty->roomTypeId) }}" >แก้ไขข้อมูล</a>
                             @method('DELETE')
-                            <button class="btn btn-danger width:40%" type="submit">ลบข้อมูล </button>
+                            <button class="btn btn-danger width:40%" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')"  type="submit">ลบข้อมูล </button>
 
                         </form>
                         </center>

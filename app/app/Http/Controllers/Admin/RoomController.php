@@ -84,22 +84,23 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        // $dormitoryData =DB::table('Dormitory')
-        //             ->where('Dormitory.id','=',$id)
+        $roomshow =DB::table('Rooms')
+                    ->where('Rooms.id','=',$id)
+                    ->get();
+        $room = DB::table('Dormitory')
+                    ->join('Dormitory','Dormitory.id','=','Rooms.Dormitory_ID')
+                    ->join('TypeRoom','TypeRoom.Type','=','Rooms.Roomtype_ID')
+                    ->select('*')
+                    ->whereColumn('Rooms.RoomCode_ID','=','Dormitory.id')
+                    ->where('Rooms.id','=',$id)
+                    ->get();
+        // $user = DB::table('Rooms')
+        //             ->join('Rooms','Rooms.id','=','users.id')
+        //             ->join('Reservations','Reservations.RoomCode_ID','=','Rooms.id')
         //             ->get();
-        $RoomData =DB::table('Dormitory')
-                    ->where('Dormitory.id','=',$id)
-                    ->get();
-        $RoomTypeData = DB::table('TypeRoom')
-                    ->where('TypeRoom.id','=',$id)
-                    ->get();
-        $roomtype = DB::table('TypeRoom')
-                    ->join('TypeRoom','TypeRoom.id','=','Rooms.Roomtype_ID')
-                    ->where('TypeRoom.id','=',$id)
-                    ->get();
+        // $room = RoomModel::find($id);
 
-        return view('admin/roomtype/show',
-                compact('roomtype','RoomTypeData','DormitoryData'));
+        return view('admin/rooms/show',compact('room','roomshow'));
     }
 
     /**

@@ -5,12 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
         <div class="card">
-            <div class="card-header">หอพักนิสิต
-                {{-- <a href="#"> โอนเงิน </a> --}}
-                <a  class="btn btn-success mr-2 "
+            <div class="card-header ">ข้อมูลผู้ใช้งาน
+                {{-- <a  class="btn btn-success mr-2 "
                     style="position:absolute ; right:0 ; top:5px"
                     href="dormitory/create" >เพิ่มหอพัก
-                </a>
+                </a> --}}
             </div>
                 @csrf
 
@@ -25,12 +24,13 @@
                     <th><center>Firstname</center></th>
                     <th><center>Lastname</center></th>
                     <th><center>เพศ</center></th>
+                    <th><center>สถานะ</center></th>
                     <th><center>การดำเนินการ</center></th>
 
                     {{-- <th>Operation </th> --}}
                 </thead>
                 <?php   $i=1;?>
-                @foreach($userdetails as $usdt)
+                @foreach($user as $usdt)
                 <tbody>
                 <tr>
                     <td>{{ $i++ }}</td>
@@ -41,19 +41,12 @@
                     <td>{{ $usdt->Gender}}</td>
                     <td>{{ $usdt->Status}}</td>
 
+
                     <td>
                         <center>
-                        <a class="btn btn-primary" href="/user/UserDetail/show/{{$usdt->id}}" >แสดงข้อมูล</a>
-                        {{-- <form method="post" action="{{ route('userdetails.destroy',$dorm->id) }}">
-                            @csrf
+                        {{-- <a class="btn btn-primary" href="/user/UserDetail/show/{{$usdt->id}}" >แสดงข้อมูล</a> --}}
 
-
-                            <a class="btn btn-warning" href="{{ route('userdetails.edit',$usdt->id) }}" >แก้ไขข้อมูล</a>
-
-                            @method('DELETE')
-                            {{-- <button class="btn btn-danger" type="submit">ลบข้อมูล</button>
-
-                        </form> --}}
+                        <a class="btn btn-primary" href="{{ route('UserDetail.show',$usdt->id) }}" >แสดงข้อมูล</a>
                         </center>
                     </td>
                 </tr>

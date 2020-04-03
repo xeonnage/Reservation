@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header ">
                 <label style="font-size: 20px; font-weight: bold;" >ข้อมูลประเภทหอพัก </label>&nbsp;&nbsp;
                 <a href="/admin/roomtype"> แสดงประเภทห้องพักทั้งหมด </a>
                 <a  class="btn btn-success mr-2 "

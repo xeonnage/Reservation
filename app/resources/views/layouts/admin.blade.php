@@ -33,8 +33,8 @@
         <a href="/admin/dormitory" class="list-group-item list-group-item-action bg-light">หอพัก</a>
         {{-- <a href="/admin/Problemtype" class="list-group-item list-group-item-action bg-light">ประเภทปัญหา</a> --}}
         {{-- <a href="/admin/reportproblem" class="list-group-item list-group-item-action bg-light">ปัญหาของผู้ใช้</a> --}}
-        <a href="#" class="list-group-item list-group-item-action bg-light">การจองห้องพัก</a>
-        <a href="/admin/user/UserDetail" class="list-group-item list-group-item-action bg-light">ข้อมูลผู้ใช้</a>
+        {{-- <a href="#" class="list-group-item list-group-item-action bg-light">การจองห้องพัก</a> --}}
+        <a href="/admin/ShowUserDetails" class="list-group-item list-group-item-action bg-light">ข้อมูลผู้ใช้</a>
 
         {{-- <a href="#" class="list-group-item list-group-item-action bg-light">พนักงาน</a>
  --}}

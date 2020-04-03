@@ -14,9 +14,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="table-responsive">
+            <div class="col-md-12">
+            <div class="card">
+             <div class="card-header"><h4>เพื่มประวัติส่วนตัว</h4></div>
         {{-- @if( sizeof($roomtype) == 0) --}}
             {{-- {{Auth::user()->id }} --}}
-            <p><h2>เพื่มประวัติส่วนตัว </h2></p>
             <form action="{{ route('UserDetail.store') }}" method="post">
             {{-- <form action="/user/UserDetail/create" method="post" > --}}
                 {{csrf_field()}}
@@ -126,7 +128,12 @@
 
 
 
-                    <button type="submit" name="submit" class="btn btn-success col-sm-2 my-3">ยืนยัน</button>
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 my-4"><center>
+                        <button type="submit" name="submit" class="btn btn-success ">ยืนยัน</button>
+                        </center>
+                    </div>
+
+
                 </div>
                 {{-- <button class="btn btn-secondary" type="reset">ยกเลิก</button> --}}
             </form>

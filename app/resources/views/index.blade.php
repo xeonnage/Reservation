@@ -115,15 +115,15 @@
                 <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
               </div><!-- /.col-lg-4 --> --}}
            <div class="col-lg-3">
-                <center><img class="rounded-circle" src="images/icon-12.jpg" alt="Generic placeholder image" width="140" height="140"></center>
+                <center><a href="/view/room"><img class="rounded-circle" src="images/icon-12.jpg" alt="Generic placeholder image" width="140" height="140"></a></center>
                 <p></p>
-                <center><p><a class="btn btn-success" href="/admin/subjects" role="button">จองห้องพัก </a></p></center>
+                <center><p><a class="btn btn-success" href="/view/room"role="button">จองห้องพัก </a></p></center>
            </div><!-- /.col-lg-4 -->
 
            <div class="col-lg-3">
-                <center><img class="rounded-circle" src="images/icon-14.jpg" alt="Generic placeholder image" width="140" height="140"></center>
+                <center><a href="/view/dormitory"><img class="rounded-circle" src="images/icon-14.jpg" alt="Generic placeholder image" width="140" height="140"></a></center>
                 <p></p>
-                <center><p><a class="btn btn-primary" href="admin/userDetails" role="button">รายชื่อหอพัก </a></p></center>
+                <center><p><a class="btn btn-primary" href="/view/dormitory" role="button">รายชื่อหอพัก </a></p></center>
            </div><!-- /.col-lg-4 -->
 
             <div class="col-lg-3">

@@ -7,9 +7,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="table-responsive">
-        {{-- @if( sizeof($roomtype) == 0) --}}
-            {{-- {{Auth::user()->id }} --}}
-            <p><h2>แก้ไขประวัติส่วนตัว </h2></p>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header"><h4>แก้ไขประวัติส่วนตัว</h4></div>
             <form action="{{ route('UserDetail.update',$usdt->User_ID) }}" method="post" >
             {{-- <form action="/user/UserDetail/update/{{$usdt->user_ID }}" method="post"> --}}
                 {{csrf_field()}}
@@ -120,14 +120,19 @@
                         <input type="text" class="form-control col-sm-4" name="country" id="country" value="{{ $usdt->country }}">
                     </div>
 
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 my-4"><center>
+                        <button type="submit" name="submit" class="btn btn-warning ">แก้ไขมูล</button>
+                        <button class="btn btn-secondary" type="reset">ยกเลิก</button>
+                        </center>
+                    </div>
 
-                    <button type="submit" name="submit" class="btn btn-warning col-sm-2 my-3">แก้ไขมูล</button>
-                    <button class="btn btn-secondary" type="reset">ยกเลิก</button>
-                </div>
+                    </div>
                 {{-- <button class="btn btn-secondary" type="reset">หยกเลิก</button> --}}
             </form>
         </div>
-
+            </div>
+        </div>
+    </div>
     </div>
 </div>
 @endsection

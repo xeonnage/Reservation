@@ -29,11 +29,11 @@ class HomeController extends Controller
     public function index()
     {
         $id =  Auth::user()->id ;
-        $detail = UserDetailModel::all();
+        // $detail = UserDetailModel::all();
         $userdetail = DB::table('UserDetails')
                         ->where('UserDetails.User_ID','=',$id)
                         ->get();
-        return view('home',compact('userdetail','detail'));
+        return view('home',compact('userdetail'));
 
 
     }
