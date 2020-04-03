@@ -29,7 +29,7 @@ class UserDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create( )
+    public function create()
     {
         // $users = DB::table('users')
         //     ->join('users','users.email','=','UserDetails.email_ID')
@@ -75,7 +75,7 @@ class UserDetailController extends Controller
             'Provinces' => 'required',//จังหวัด
             'country' => 'required',//ประเทศ
         ]);
-        $userdetails->user_ID = Auth::user()->id ;
+        $userdetails->User_ID = Auth::user()->id ;
         $userdetails->Code_ID = $request->Code_ID;//รหัสประชาชน
         $userdetails->Status = $request->Status;//สถานะ นิสิต/บุคคลทั่วไป
         $userdetails->Collegian_ID = $request->Collegian_ID;//รหัสนิสิต
@@ -147,12 +147,11 @@ class UserDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $request->validate([
-            // 'user_ID'=> $request->Auth::user()->id,
-            'Code_ID' => 'required|unique:UserDetails', //รหัสประชาชน
+            // 'user_ID'=> $request->Auth::user()->id,UserDetails
+            'Code_ID' => 'required', //รหัสประชาชน
             'Status' => 'required',//สถานะ นิสิต/บุคคลทั่วไป
-            'Collegian_ID' => 'required|unique:UserDetails',//รหัสนิสิต
+            'Collegian_ID' => 'required',//รหัสนิสิต
             'Firstname_Thai' => 'required',//ชืื่อ ไทย
             'Lastname_Thai' => 'required',//นามสกุล ไทย
             'Firstname_Eng' => 'required',//ชื่อ อิ้ง
@@ -174,7 +173,7 @@ class UserDetailController extends Controller
         ]);
 
         DB::table('UserDetails')
-            ->where('user_ID','=',$id)
+            ->where('User_ID','=',$id)
             ->update([
             // 'user_ID'=> $request->user_ID,
             'Code_ID' => $request->Code_ID,//รหัสประชาชน

@@ -15,12 +15,17 @@
     <div class="row justify-content-center">
         <div class="table-responsive">
         {{-- @if( sizeof($roomtype) == 0) --}}
-            {{Auth::user()->id }}
-            <p><h2>เพื่มข้อมูลประวัติส่วนตัว </h2></p>
+            {{-- {{Auth::user()->id }} --}}
+            <p><h2>เพื่มประวัติส่วนตัว </h2></p>
             <form action="{{ route('UserDetail.store') }}" method="post">
             {{-- <form action="/user/UserDetail/create" method="post" > --}}
                 {{csrf_field()}}
                 <div class="form-inline">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
+                        <label for="Code_ID" class="col-sm-2">Email </label>
+                         <input type="text" class="form-control col-sm-10" name="Code_ID" id="Code_ID" value=" {{Auth::user()->email }}" readonly>
+                     </div>
+
                     <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
                        <label for="Code_ID" class="col-sm-2">รหัสประชาชน / หนังสือเดินทาง <label style="color:red;"> * </label></label>
                         <input type="text" class="form-control col-sm-10" name="Code_ID" id="Code_ID" placeholder=" ">
