@@ -12,7 +12,7 @@
 |
 */
 Route::middleware(['auth','IsAdmin'])->group(function(){
-    // Route::Resource('admin/problemtype','Admin\ProblemTypeController');
+
     Route::get('admin/Problemtype','Admin\ProblemTypeController@create');
     Route::get('admin/Problemtype','Admin\ProblemTypeController@index');
     Route::post('admin/Problemtype','Admin\ProblemTypeController@store');
@@ -32,16 +32,16 @@ Route::middleware(['auth','IsAdmin'])->group(function(){
 Route::Resource('user/UserDetail','Admin\UserDetailController');
 // Route::Resource('user/UserDetail','Admin\UserDetailController');
 
-Route::Resource('view/room','Admin\ShowRoomController');
-Route::Resource('view/dormitory','Admin\ShowDormitoryController');
+Route::Resource('view/ShowRoom','Admin\ShowRoomController');
+Route::Resource('view/ShowDormitory','Admin\ShowDormitoryController');
 
-// Route::Resource('user/reportproblem','Admin\reportproblemController');
+
 
 Route::get('user/reservations/index','Admin\ReservationController@index');
 Route::get('user/reservations/create/{id}','Admin\ReservationController@create');
 Route::post('user/reservations/store','Admin\ReservationController@store');
 
-// Route::get('user/reservations/create/{id}','Admin\ReservationController@create');
+
 
 //userDeTail
 // Route::get('user/UserDetail/create','Admin\UserDetailController@create');

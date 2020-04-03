@@ -15,8 +15,8 @@ class ShowDormitoryController extends Controller
      */
     public function index()
     {
-        $dormitory = DB::table('Dormitory')->get();
-        return view('view.dormitory',compact('dormitory'));
+        $dormitorys = DB::table('Dormitory')->get();
+        return view('view.dormitory',compact('dormitorys'));
     }
 
     /**

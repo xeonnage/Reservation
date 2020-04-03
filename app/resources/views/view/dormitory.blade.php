@@ -28,7 +28,7 @@
 
                         {{-- <th>Operation </th> --}}
                     </thead>
-                    @foreach($dormitory as $dorm)
+                    @foreach($dormitorys as $dorm)
                     <tbody>
                     <tr>
                         <td>{{ $dorm->id}}</td>
