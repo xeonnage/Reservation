@@ -36,7 +36,7 @@
                     @if(sizeof($userdetail ) == 0)
                         <a href="{{Auth::user()->id}}" onclick="return confirm('คุณยังไม่ได้เพื่มข้อมูลส่วนตัว \nกรุณาเพื่มข้อมูลส่วนตัวก่อน ไม่งั้นจะจองห้องไม่ได้ค่ะ')" class="btn btn-danger">จองห้อง</a>
                     @elseif(  sizeof($Reservations ) == 1)
-                    <a href="/user/reservations/show/{{$Reservations[0]->id}}" class="btn btn-success">ข้อมูลการจอง</a>
+                        <a href="/user/reservations/show/{{$Reservations[0]->id}}" class="btn btn-primary">ข้อมูลการจอง</a>
                     @else
                         <a href="/user/reservations/index" class="btn btn-success">จองห้อง</a>
 

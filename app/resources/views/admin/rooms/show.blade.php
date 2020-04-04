@@ -21,7 +21,6 @@
                     <input type="text" class="form-control col-sm-4" value=" {{ $room[0]->RoomCode_ID }}" readonly>
                     <label for="Code_ID" class="col-sm-2">ชั้น </label>
                     <input type="text" class="form-control col-sm-4" value=" {{ $room[0]->Floor }}" readonly>
-
                 </div>
                 <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
                     <label for="Code_ID" class="col-sm-2">หอพัก </label>
@@ -34,6 +33,11 @@
                         value="ห้องพัดลม  "
                     @endif
                     readonly>
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
+                    <label for="Code_ID" class="col-sm-2">ประเภทห้อง </label>
+                    <input type="text" class="form-control col-sm-10" value=" {{ $room[0]->Description }}" readonly>
+
                 </div>
 
             <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">

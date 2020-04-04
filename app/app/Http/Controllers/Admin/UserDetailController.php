@@ -74,6 +74,7 @@ class UserDetailController extends Controller
             'country' => 'required',//ประเทศ
         ]);
         $userdetails->User_ID = Auth::user()->id ;
+        $userdetails->email = Auth::user()->email ;
         $userdetails->Code_ID = $request->Code_ID;//รหัสประชาชน
         $userdetails->Status = $request->Status;//สถานะ นิสิต/บุคคลทั่วไป
         $userdetails->Collegian_ID = $request->Collegian_ID;//รหัสนิสิต

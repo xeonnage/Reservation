@@ -40,6 +40,7 @@
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
                     <nav for="Gender" class="col-sm-2">E-mail </nav>
+                    <nav class="col-sm-2 text-left">{{ $userdetails[0]->email}}</nav>  {{-- เพื่มมา --}}
                     <nav class="col-sm-2" > </nav>
                     <nav for="Firstname_Eng" class="col-sm-2">เบอร์โทร </nav>
                     <nav class="col-sm-2 text-left">{{ $userdetails[0]->Phone}}</nav>
