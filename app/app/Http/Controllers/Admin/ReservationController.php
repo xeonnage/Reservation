@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use App\UserDetailModel;
 use App\ReservationModel;
@@ -46,7 +47,7 @@ class ReservationController extends Controller
         $reservations = DB::table('Dormitory')
         ->join('Rooms','Dormitory.id','=','Rooms.Dormitory_ID')
         ->join('TypeRoom','TypeRoom.Type','=','Rooms.Roomtype_ID')
-        ->select('*')
+        ->select('*','Rooms.id as id')
         ->whereColumn('TypeRoom.Dormitory_ID','=','Rooms.Dormitory_ID')
         ->where("Rooms.id","=",$id)
         ->get();
@@ -81,6 +82,13 @@ class ReservationController extends Controller
         $reservation->Detail = $request->Detail;
 
         $reservation->save();
+
+        DB::table('Rooms')
+            ->where('id','=',$request->RoomCode_ID)
+            ->update([
+            'AtNumberPreple' =>  DB::raw('AtNumberPreple + 1'),
+        ]);
+
         Session()->flash("success","เพื่มข้อมูลเรียบร้อยแล้ว!");
         return redirect('/home');
 
@@ -94,16 +102,28 @@ class ReservationController extends Controller
      */
     public function show($id)
     {
-        $reservations = DB::table('Dormitory')
-        ->join('Rooms','Dormitory.id','=','Rooms.Dormitory_ID')
-        ->join('TypeRoom','TypeRoom.Type','=','Rooms.Roomtype_ID')
-        ->select('*')
-        ->whereColumn('TypeRoom.Dormitory_ID','=','Rooms.Dormitory_ID')
-        ->where("Rooms.id","=",$id)
-        ->get();
+        // $user =DB::table('Rooms')
+        //         ->join('Reservations','Reservations.RoomCode_ID','=','Rooms.id')
+        //         ->join('UserDetails','UserDetails.User_ID','=','Reservations.User_ID')
+        //         ->select('*')
+        //         ->where('Rooms.id','=',$id)
+        //         ->get();
+
+        // $Reservations = DB::table('Reservations')
+        //             ->join('Rooms','Rooms.id','=','Reservations.RoomCode_ID')
+        //             ->get();
+
+        $Reservations = DB::table('Dormitory')
+                ->join('Rooms','Rooms.Dormitory_ID','=','Dormitory.id')
+                ->join('Reservations','Reservations.RoomCode_ID','=','Rooms.id')
+                ->join('TypeRoom','TypeRoom.Type','=','Rooms.Roomtype_ID')
+                ->select('*','Rooms.RoomCode_ID as RoomCode_ID')
+                ->where('Reservations.id','=',$id)
+                ->get();
+        // dd($reservations);
 
 
-        return view('user.reservations.show',compact('reservations'));
+        return view('user.reservations.show',compact('Reservations'));
     }
 
     /**

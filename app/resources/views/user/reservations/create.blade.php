@@ -24,6 +24,7 @@
                 <form action="/user/reservations/store" method="post" >
 
                 {{csrf_field()}}
+                <input type="hidden" name="RoomCode_ID" id="RoomCode_ID" value = "{{$room->id}}" >
 
                 <div class="form-inline">
 
@@ -72,10 +73,9 @@
                                 "ห้องพัดลม"
                             @endif readonly >
                     </div>
-
                     <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
                         <strong for="Description" class="col-sm-2">รหัสห้อง <font style="color:red;"> * </font></strong>
-                        <input type="text" class="form-control col-sm-10" name="RoomCode_ID" id="RoomCode_ID" value = "{{$room->RoomCode_ID}} " readonly>
+                        <input type="text" class="form-control col-sm-10" value = "{{$room->RoomCode_ID}} " readonly>
                     </div>
 
                     <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">

@@ -29,7 +29,7 @@
 
                     {{-- <th>Operation </th> --}}
                 </thead>
-                <?php   $i=1;?>
+                <?php   $i= 1; ?>
                 @foreach ($room as $rm)
             <tbody>
                     <td>{{ $i++ }}</td>
@@ -42,7 +42,6 @@
                         @else
                            <p style="color: #00cc00"> ว่าง {{$rm->NumberPeople - $rm->AtNumberPreple}} ที่ </p>
                         @endif
-
                     </td>
                     <td>
                         @if( $rm->Type  == 1)
@@ -58,7 +57,7 @@
                         <form method="post" action="{{ route('rooms.destroy',$rm->RoomCode_ID) }}">
                             @csrf
 
-                            <a class="btn btn-success width:40px" href="{{ route('rooms.show',$rm->id) }}" >แสดงข้อมูล</a>
+                            <a class="btn btn-primary width:40px" href="{{ route('rooms.show',$rm->id) }}" >แสดงข้อมูล</a>
 
                             @method('DELETE')
                             <button class="btn btn-danger width:40%" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')" type="submit">ลบข้อมูล </button>

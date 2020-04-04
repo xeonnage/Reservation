@@ -23,16 +23,17 @@
                     <input type="text" class="form-control col-sm-4" value=" {{ $room[0]->Floor }}" readonly>
 
                 </div>
-
-                <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
-                    <label for="Code_ID" class="col-sm-2">ประเภทห้อง </label>
-                    <input type="text" class="form-control col-sm-4" value=" {{ $room[0]->Type }}" readonly>
-
-                </div>
                 <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
                     <label for="Code_ID" class="col-sm-2">หอพัก </label>
                     <input type="text" class="form-control col-sm-4" value=" {{ $room[0]->Name_Thai }}" readonly>
-
+                    <label for="Code_ID" class="col-sm-2">ประเภทห้อง </label>
+                    <input type="text" class="form-control col-sm-4"
+                    @if($room[0]->Type == 1  )
+                        value="ห้องปรับอากาศ "
+                    @else
+                        value="ห้องพัดลม  "
+                    @endif
+                    readonly>
                 </div>
 
             <div class="form-group col-xs-12 col-sm-12 col-md-12 my-2">
@@ -42,13 +43,34 @@
                     <th><center>รหัสนิสิต </center></th>
                     <th><center>ชื่อ</center></th>
                     <th><center>นามสกุล</center></th>
-                    <th><center>สถานะ</center></th>
+                    {{-- <th><center>สถานะ</center></th> --}}
                     <th><center>การดำเนินการ</center></th>
 
                     {{-- <th>Operation </th> --}}
                 </thead>
                 <?php   $i=1;?>
+                <tbody>
+                    @if(sizeof($user) != 0)
+                        @foreach($user as $user)
+                            <tr>
+                                <td>{{ $i++ }} </td>
+                                {{-- <td>{{ $user->User_ID }} </td> --}}
+                                <td>{{ $user->Collegian_ID }} </td>
+                                <td>{{ $user->Firstname_Thai }} </td>
+                                <td>{{ $user->Lastname_Thai }} </td>
 
+                                <td>
+                                    <center>
+                                    <a class="btn btn-primary" href="{{ route('UserDetail.show',$user->id) }}" >แสดงข้อมูล</a>
+                                    </center>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="5"><h4 style="text-align:center"><label style="color: #ff5050"> --- ไม่มีข้อมูลผู้อาศัย ---</label></h4></td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
             </div>

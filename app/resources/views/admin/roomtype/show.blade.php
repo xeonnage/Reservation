@@ -85,7 +85,7 @@
                 @endforeach
                 @else
                 <tr>
-                    <td colspan="6"><h4 style="text-align:center"><label style="color: #ff5050"> --- ไม่มีข้อมูลประเภทหอพัก ---</label></h4></td>
+                    <td colspan="6"><h4 style="text-align:center"><label style="color: #ff5050"> --- ไม่มีข้อมูลผู้อยู่อาศัย ---</label></h4></td>
                 </tr>
                 @endif
             </table>

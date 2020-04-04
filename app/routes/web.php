@@ -40,6 +40,7 @@ Route::Resource('view/ShowDormitory','Admin\ShowDormitoryController');
 Route::get('user/reservations/index','Admin\ReservationController@index');
 Route::get('user/reservations/create/{id}','Admin\ReservationController@create');
 Route::post('user/reservations/store','Admin\ReservationController@store');
+Route::get('user/reservations/show/{id}','Admin\ReservationController@show');
 
 
 

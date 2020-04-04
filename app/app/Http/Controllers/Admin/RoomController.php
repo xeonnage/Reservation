@@ -17,13 +17,24 @@ class RoomController extends Controller
      */
     public function index()
     {
+
+        $count = DB::table('Reservations')
+        // // SELECT COUNT(RoomCode_ID) FROM Reservations WHERE RoomCode_ID
+        //     // ->select('*','COUNT(Reservations.RoomCode_ID)  as count')
+        //     ->select('*',DB::raw('count(Reservations.RoomCode_ID) as count'))
+        //     ->where('RoomCode_ID')
+        //     // ->where('Reservations.RoomCode_ID')
+            ->get();
+
         $room = DB::table('Dormitory')
             ->join('Rooms','Dormitory.id','=','Rooms.Dormitory_ID')
             ->join('TypeRoom','TypeRoom.Type','=','Rooms.Roomtype_ID')
-                ->select('*')
-                ->whereColumn('TypeRoom.Dormitory_ID','=','Rooms.Dormitory_ID')
-                ->get();
-        return view('admin.rooms.index',compact('room'));
+            ->select('*',"Rooms.id as id")
+            ->whereColumn('TypeRoom.Dormitory_ID','=','Rooms.Dormitory_ID')
+            ->get();
+
+        return view('admin.rooms.index',compact('room','count'));
+
     }
 
     /**
@@ -84,23 +95,27 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        $roomshow =DB::table('Rooms')
+        // echo("xs");
+        $user =DB::table('Rooms')
+                    ->join('Reservations','Reservations.RoomCode_ID','=','Rooms.id')
+                    ->join('UserDetails','UserDetails.User_ID','=','Reservations.User_ID')
+                    ->select('*')
                     ->where('Rooms.id','=',$id)
                     ->get();
+
+        // $Reservations = DB::table('Reservations')
+        //             ->join('Rooms','Dormitory.id','=','Rooms.Dormitory_ID')
+        //             ->get();
         $room = DB::table('Dormitory')
-                    ->join('Dormitory','Dormitory.id','=','Rooms.Dormitory_ID')
+                    ->join('Rooms','Rooms.Dormitory_ID','=','Dormitory.id')
                     ->join('TypeRoom','TypeRoom.Type','=','Rooms.Roomtype_ID')
                     ->select('*')
-                    ->whereColumn('Rooms.RoomCode_ID','=','Dormitory.id')
+                    ->whereColumn('Dormitory.id','=','Rooms.Dormitory_ID')
                     ->where('Rooms.id','=',$id)
                     ->get();
-        // $user = DB::table('Rooms')
-        //             ->join('Rooms','Rooms.id','=','users.id')
-        //             ->join('Reservations','Reservations.RoomCode_ID','=','Rooms.id')
-        //             ->get();
-        // $room = RoomModel::find($id);
 
-        return view('admin/rooms/show',compact('room','roomshow'));
+
+        return view('admin/rooms/show',compact('room','user'));
     }
 
     /**

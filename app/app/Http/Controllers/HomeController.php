@@ -30,10 +30,14 @@ class HomeController extends Controller
     {
         $id =  Auth::user()->id ;
         // $detail = UserDetailModel::all();
+        $Reservations = DB::table('Reservations')
+                        ->where('Reservations.User_ID','=',$id)
+                        ->get();
+
         $userdetail = DB::table('UserDetails')
                         ->where('UserDetails.User_ID','=',$id)
                         ->get();
-        return view('home',compact('userdetail'));
+        return view('home',compact('userdetail','Reservations'));
 
 
     }
